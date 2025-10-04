@@ -20,7 +20,7 @@ public class MemeCommand implements Runnable {
     @Override
     public void run() {
         String path = memeService.generateMeme(top, bottom);
-        System.out.printf("Wrote meme at %s", path);
+        System.out.printf("Wrote meme to %s\n", path);
     }
 
 }

@@ -32,6 +32,10 @@ You can run your application in dev mode that enables live coding using:
 Also for picocli applications the dev mode is supported. When running dev mode, the picocli application is executed and
 on press of the Enter key, is restarted.
 
+## Image formats
+
+Note that any new images you add need to *not* have alpha enabled (they should be 24-bit colour, not 32-bit colour).
+
 ## Related Guides
 
 - Picocli ([guide](https://quarkus.io/guides/picocli)): Develop command line applications with Picocli
