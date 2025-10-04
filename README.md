@@ -17,9 +17,11 @@ podman run -it --rm --entrypoint /bin/bash -v `pwd`:/project:z -v ~/.m2:/maven:z
 ./mvnw package -Pnative -Dmaven.repo.local=/maven/repository/
 ```
 
-Execute your native executable with: `./target/meme-generator-1.0.0-SNAPSHOT-runner "hello" "world"`
+Execute your native executable with: `./target/meme-generator-1.0.0-SNAPSHOT-runner "say hello world"`
+Another good invocation is `./target/meme-generator-1.0.0-SNAPSHOT-runner "i had cake" cat`
 
 You can then run `open meme.jpg` on the local machine to see the output.
+Keep it open in the IDE and it will update when new memes are generated.
 
 ## Running the application in dev mode
 

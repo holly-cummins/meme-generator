@@ -27,11 +27,11 @@ public class MemeService {
     }
 
     // Generates a meme image with the specified top and bottom text
-    // This method reads a base image (boromir.png) from resources,
-    // draws the specified text on it, and returns the image as a byte array.
-    public String generateMeme(String topText, String bottomText) {
+    // This method reads a base image from resources,
+    // draws the specified text on it, and creates an image.
+    public String generateMeme(Meme meme, String text) {
         try {
-            InputStream is = getClass().getClassLoader().getResourceAsStream("META-INF/resources/boromir.png");
+            InputStream is = getClass().getClassLoader().getResourceAsStream("META-INF/resources/" + meme.fileName());
             if (is == null) {
                 throw new IllegalStateException("Image not found");
             }
@@ -41,8 +41,8 @@ public class MemeService {
             g.setFont(memeFont);
             g.setColor(Color.WHITE);
 
-            drawText(g, topText, image.getWidth(), image.getHeight(), true);
-            drawText(g, bottomText, image.getWidth(), image.getHeight(), false);
+            drawText(g, meme.text(), image.getWidth(), image.getHeight(), !meme.append());
+            drawText(g, text, image.getWidth(), image.getHeight(), meme.append());
             g.dispose();
 
             File file = new File("meme.jpg");
@@ -67,10 +67,13 @@ public class MemeService {
         int outlineOffset = 4;
         // How far off the top and bottom edges the text is
         double positionOffset = 1.4;
+        // The bottom text should be higher, for visual balance
+        double bottomPadding = 0.7;
+
 
         FontMetrics metrics = g.getFontMetrics();
         int x = (width - metrics.stringWidth(text)) / 2;
-        int y = isTop ? (int) (positionOffset * metrics.getHeight()) : height - (int) ((positionOffset - 0.3) * metrics.getHeight());
+        int y = isTop ? (int) (positionOffset * metrics.getHeight()) : height - (int) ((positionOffset - (1 - bottomPadding)) * metrics.getHeight());
 
         // Outline
         g.setColor(Color.BLACK);
