@@ -17,7 +17,9 @@ podman run -it --rm --entrypoint /bin/bash -v `pwd`:/project:z -v ~/.m2:/maven:z
 ./mvnw package -Pnative -Dmaven.repo.local=/maven/repository/
 ```
 
-Execute your native executable with: `./target/meme-generator-1.0.0-SNAPSHOT-runner`
+Execute your native executable with: `./target/meme-generator-1.0.0-SNAPSHOT-runner "hello" "world"`
+
+You can then run `open meme.jpg` on the local machine to see the output.
 
 ## Running the application in dev mode
 
@@ -29,13 +31,6 @@ You can run your application in dev mode that enables live coding using:
 
 Also for picocli applications the dev mode is supported. When running dev mode, the picocli application is executed and
 on press of the Enter key, is restarted.
-
-As picocli applications will often require arguments to be passed on the commandline, this is also possible in dev mode
-via:
-
-```shell script
-./mvnw quarkus:dev -Dquarkus.args='Quarky'
-```
 
 ## Related Guides
 
