@@ -39,7 +39,6 @@ public class MemeService {
 
             Graphics2D g = image.createGraphics();
             g.setFont(memeFont);
-            g.setColor(Color.WHITE);
 
             drawText(g, meme.text(), image.getWidth(), image.getHeight(), !meme.append());
             drawText(g, text, image.getWidth(), image.getHeight(), meme.append());
