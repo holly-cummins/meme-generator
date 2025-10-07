@@ -13,6 +13,8 @@ Instead, use a container for building and running the application.
 podman run -it --rm --entrypoint /bin/bash -v `pwd`:/project:z -v ~/.m2:/maven:z quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-21
 ```
 
+(or use the `./linux` shell script)
+
 ```shell
 ./mvnw package -Pnative -Dmaven.repo.local=/maven/repository/
 ```

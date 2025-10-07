@@ -1,0 +1,3 @@
+#! /bin/bash
+podman run -it --rm --entrypoint /bin/bash -v `pwd`:/project:z -v ~/.m2:/maven:z quay.io/quarkus/ubi9-quarkus-mandrel-builder-image:jdk-21
+
