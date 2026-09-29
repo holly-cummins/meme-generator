@@ -6,7 +6,7 @@ adds a command-line interface.
 
 ## Creating a native executable
 
-On MacOS, AWT is not supported in native applications.
+On MacOS, before Quarkus 4, AWT is not supported in native applications.
 Instead, use a container for building and running the application.
 
 ```shell
@@ -18,6 +18,8 @@ podman run -it --rm --entrypoint /bin/bash -v `pwd`:/project:z -v ~/.m2:/maven:z
 ```shell
 ./mvnw package -Pnative -Dmaven.repo.local=/maven/repository/
 ```
+
+With Quarkus 4, AWT will work, but you will need a recent GraalVM, such as `sdk use java 25.4-graalce-local`.
 
 Execute your native executable with: `./target/meme-generator-1.0.0-SNAPSHOT-runner "say hello world"`
 Another good invocation is `./target/meme-generator-1.0.0-SNAPSHOT-runner "i had cake" cat`
